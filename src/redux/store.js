@@ -1,22 +1,35 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { createAction, createReducer } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 
-export const add = createAction('contacts/add');
-export const remove = createAction('contacts/remove');
-export const change = createAction('filter/change')
-
-const contactsReducer = createReducer([], {
-    [add]: (state, action) => [...state, action.payload],
-    [remove]: (state, action) => state.filter(item => item.id !== action.payload),
-});
-
-const filterReducer = createReducer('', {
-    [change]: (state, action) => state = action.payload,
+const contactsSlise = createSlice({
+    name: 'contacts',
+    initialState: [],
+    reducers: {
+        add(state, action) {
+            state.push(action.payload)
+        },
+        remove(state, action) {
+            return state.filter(item => item.id !== action.payload)
+        },
+    }
 })
+
+const filterSlice = createSlice({
+    name: 'filter',
+    initialState: '',
+    reducers: {
+        change(state, action) {
+            return state = action.payload
+        }
+    }
+})
+
+export const { add, remove } = contactsSlise.actions;
+export const { change } = filterSlice.actions;
 
 export const store = configureStore({
     reducer: {
-        contacts: contactsReducer,
-        filter: filterReducer,
+        contacts: contactsSlise.reducer,
+        filter: filterSlice.reducer,
   },
 });

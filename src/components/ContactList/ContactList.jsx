@@ -1,8 +1,8 @@
 import React from "react";
-import {Item, List} from "components/ContactList/ContactList.styled";
 import { useSelector, useDispatch } from "react-redux";
 import { remove } from "redux/store";
 
+import { Item, List } from 'components/ContactList/ContactList.styled';
 
 const ContactList = () => {
   const contacts = useSelector(state => state.contacts);

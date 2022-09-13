@@ -2,9 +2,10 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage, } from 'formik';
 import { nanoid } from 'nanoid';
 import * as yup from 'yup';
-import { FormButton, FormContainer, FormLabel } from './ContactForm.styled';
 import { useDispatch } from 'react-redux';
 import { add } from 'redux/store';
+
+import { FormButton, FormContainer, FormLabel } from './ContactForm.styled';
 
 const validationSchema = yup.object().shape({
   name: yup.string().required('Please enter name!'),
