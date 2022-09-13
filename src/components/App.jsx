@@ -1,16 +1,20 @@
+
+import ContactForm from 'components/ContactForm';
+import ContactList from 'components/ContactList';
+// import FilterContacts from 'components/FilterContacts';
+import AppContainer from 'components/App.styled';
+
+
+
 export const App = () => {
+  
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-      React homework template
-    </div>
+    <AppContainer>
+      <h1>Phonebook</h1>
+      <ContactForm />
+      <h2>Contacts</h2>
+      {/* <FilterContacts value={filter} onChange={changeFilter} /> */}
+      <ContactList />
+    </AppContainer>
   );
 };
