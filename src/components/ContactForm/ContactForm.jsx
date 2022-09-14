@@ -47,11 +47,17 @@ const ContactForm = () => {
         >
           <Form autoComplete="off">
             <FormLabel htmlFor="name">Name</FormLabel>
-            <Field validate={validate} name="name" type="text" />
+            <Field
+              validate={validate}
+              name="name"
+              type="text"
+              placeholder="enter name"
+            />
             <ErrorMessage component="div" name="name" />
             <FormLabel htmlFor="tel">Number</FormLabel>
-            <Field name="number" type="tel" />
-            <ErrorMessage component="div" name="number" /><br/>
+            <Field name="number" type="tel" placeholder="enter number" />
+            <ErrorMessage component="div" name="number" />
+            <br />
             <FormButton type="submit">Add contact</FormButton>
           </Form>
         </Formik>
