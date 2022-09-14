@@ -6,11 +6,10 @@ const contactsSlise = createSlice({
     initialState: [],
     reducers: {
         add(state, action) {
-            console.log(state);
-            state.push(action.payload);
+            state.push(action.payload)
         },
         remove(state, action) {
-            return state.filter(item => item.id !== action.payload);
+            return state.filter(item => item.id !== action.payload)
         },
     }
 })
