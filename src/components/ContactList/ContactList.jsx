@@ -1,14 +1,15 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { remove } from "redux/store";
 
 import { Item, List } from 'components/ContactList/ContactList.styled';
+import { getContacts, remove } from "redux/Slices/ContactsSlice";
+import { getFilter } from "redux/Slices/FilterSlice";
 
 const ContactList = () => {
-  const contacts = useSelector(state => state.contacts);
-  const filter = useSelector(state => state.filter)
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(getFilter);
   const dispatch = useDispatch();
-  if (!contacts) {
+  if (!contacts[0]) {
     return;
   }
     const filteredContacts = contacts.filter(contact =>
