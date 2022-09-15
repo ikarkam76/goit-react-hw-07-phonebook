@@ -1,12 +1,23 @@
 import styled from "@emotion/styled";
 
-const AppContainer = styled.div`
-  width: 450px;
-  padding: 5px;
-  border: 1px solid grey;
-  border-radius: 5px;
-  background-color: #ebe8e8;
-  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.2);
+export const FirstTitle = styled.h1`
+  font-size: 40px;
+  color: yellow;
 `;
 
-export default AppContainer;
+export const SecondTitle = styled.h2`
+  font-size: 35px;
+  color: yellow;
+`;
+
+export const AppContainer = styled.div`
+  width: 800px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 15px;
+  border-radius: 50px;
+  box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.6);
+  
+`;
+

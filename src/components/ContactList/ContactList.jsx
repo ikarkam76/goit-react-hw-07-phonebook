@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Item, List } from 'components/ContactList/ContactList.styled';
+import { Contact, ContactName, ContactTel, DeleteButton, Item, List } from 'components/ContactList/ContactList.styled';
 import { useFetchContactsQuery, useDeleteContactMutation } from "redux/Slices/ContactsSlice";
 import { Loader } from "components/Loader/Loader";
 import { getFilter } from "redux/Slices/FilterSlice";
@@ -24,12 +24,16 @@ function ContactList() {
         {filteredContacts[0] ? (
           filteredContacts.map(contact => (
             <Item key={contact.id}>
-              <p>
-                {contact.name}: {contact.phone}
-              </p>
-              <button type="button" onClick={() => deleteContact(contact.id)}>
-                {!isLoading ? '...' : 'Delete'}
-              </button>
+              <Contact>
+                <ContactName>{contact.name}</ContactName>
+                <ContactTel>📞: {contact.phone}</ContactTel>
+              </Contact>
+              <DeleteButton
+                type="button"
+                onClick={() => deleteContact(contact.id)}
+              >
+                {!isLoading ? '...' : 'DELETE'}
+              </DeleteButton>
             </Item>
           ))
         ) : (

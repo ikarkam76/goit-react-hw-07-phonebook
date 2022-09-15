@@ -8,10 +8,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: radial-gradient(#d8d8d8 10%, #fff 10%);
-    background-size: 20px 20px;
-    color: #212121;
-    line-height: 1.5;
+  background: rgb(34,53,195);
+background: linear-gradient(180deg, rgba(34,53,195,1) 0%, rgba(217,237,10,0.8211659663865546) 95%);
 }
 
 p, ul {
