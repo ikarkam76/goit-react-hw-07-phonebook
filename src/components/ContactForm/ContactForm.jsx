@@ -2,8 +2,8 @@ import React from 'react';
 import { Formik, Field, Form, ErrorMessage, } from 'formik';
 import { nanoid } from 'nanoid';
 import * as yup from 'yup';
-import { useDispatch, useSelector } from 'react-redux';
-import { add, getContacts } from 'redux/Slices/ContactsSlice';
+// import { useDispatch, useSelector } from 'react-redux';
+// import { getContacts } from 'redux/Slices/ContactsSlice';
 
 import { FormButton, FormContainer, FormLabel } from './ContactForm.styled';
 
@@ -27,14 +27,13 @@ const initialValues = {
 };
 
 const ContactForm = () => {
-  const dispatch = useDispatch();
-  const contacts = useSelector(getContacts);
+  // const dispatch = useDispatch();
+  // const contacts = useSelector(getContacts);
   const handleSubmit = (values, { resetForm }) => {
-    if (contacts.find(contact => contact.name === values.name)) {
-      return alert('This name is already in contacts!');
-      }
+    // if (contacts.find(contact => contact.name === values.name)) {
+    //   return alert('This name is already in contacts!');
+    //   }
         (values.id = nanoid());
-        dispatch(add(values));
         resetForm();
     }
     
