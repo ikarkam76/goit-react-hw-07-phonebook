@@ -14,18 +14,18 @@ function ContactList() {
   // );
   return (
     <List>
-      {isFetching && <Loader />}
-      {contacts &&
-        contacts.map(contact => (
-          <Item key={contact.id}>
-            <p>
-              {contact.name}: {contact.phone}
-            </p>
-            <button type="button" onClick={() => deleteContact(contact.id)}>
-              Delete
-            </button>
-          </Item>
-        ))}
+      {isFetching ? <Loader /> :
+        contacts && contacts[0] ?
+          contacts.map(contact => (
+            <Item key={contact.id}>
+              <p>
+                {contact.name}: {contact.phone}
+              </p>
+              <button type="button" onClick={() => deleteContact(contact.id)}>
+                Delete
+              </button>
+            </Item>
+        )) : <h4>Not found any contacts</h4>}
     </List>
   );
 }

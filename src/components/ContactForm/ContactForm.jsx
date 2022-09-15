@@ -1,10 +1,7 @@
 import React from 'react';
 import { Formik, Field, Form, ErrorMessage, } from 'formik';
-import { nanoid } from 'nanoid';
 import * as yup from 'yup';
-// import { useDispatch, useSelector } from 'react-redux';
-// import { getContacts } from 'redux/Slices/ContactsSlice';
-
+import { useCreateContactMutation } from 'redux/Slices/ContactsSlice';
 import { FormButton, FormContainer, FormLabel } from './ContactForm.styled';
 
 const validationSchema = yup.object().shape({
@@ -27,13 +24,12 @@ const initialValues = {
 };
 
 const ContactForm = () => {
-  // const dispatch = useDispatch();
-  // const contacts = useSelector(getContacts);
-  const handleSubmit = (values, { resetForm }) => {
+  const [createContact] = useCreateContactMutation();
+  const handleSubmit = (event, { resetForm }) => {
     // if (contacts.find(contact => contact.name === values.name)) {
     //   return alert('This name is already in contacts!');
     //   }
-        (values.id = nanoid());
+        createContact(event);
         resetForm();
     }
     
@@ -50,11 +46,11 @@ const ContactForm = () => {
               validate={validate}
               name="name"
               type="text"
-              placeholder="enter name"
+              placeholder="Name Firstname"
             />
             <ErrorMessage component="div" name="name" />
-            <FormLabel htmlFor="tel">Number</FormLabel>
-            <Field name="number" type="tel" placeholder="enter number" />
+            <FormLabel htmlFor="tel">Phone number</FormLabel>
+            <Field name="number" type="tel" placeholder="012-345-6789" />
             <ErrorMessage component="div" name="number" />
             <br />
             <FormButton type="submit">Add contact</FormButton>
