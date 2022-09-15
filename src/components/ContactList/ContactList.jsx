@@ -1,28 +1,29 @@
 import React from "react";
-
+import { useSelector } from "react-redux";
 import { Item, List } from 'components/ContactList/ContactList.styled';
 import { useFetchContactsQuery, useDeleteContactMutation } from "redux/Slices/ContactsSlice";
 import { Loader } from "components/Loader/Loader";
-// import { getFilter } from "redux/Slices/FilterSlice";
+import { getFilter } from "redux/Slices/FilterSlice";
 
 function ContactList() {
   const { data: contacts, isFetching } = useFetchContactsQuery();
-  const [deleteContact] = useDeleteContactMutation();
+  const [deleteContact, isLoading] = useDeleteContactMutation();
+  const filter = useSelector(getFilter);
 
-  // const filteredContacts = data.filter(contact =>
-  //   contact.name.toLowerCase().includes(filter.toLowerCase())
-  // );
+  const filteredContacts = contacts.filter(contact =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
+  );
   return (
     <List>
       {isFetching ? <Loader /> :
-        contacts && contacts[0] ?
-          contacts.map(contact => (
+        filteredContacts && filteredContacts[0] ?
+          filteredContacts.map(contact => (
             <Item key={contact.id}>
               <p>
                 {contact.name}: {contact.phone}
               </p>
               <button type="button" onClick={() => deleteContact(contact.id)}>
-                Delete
+                {!isLoading ? '...' : "Delete"}
               </button>
             </Item>
         )) : <h4>Not found any contacts</h4>}
