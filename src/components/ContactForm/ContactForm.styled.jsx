@@ -11,7 +11,7 @@ export const FormContainer = styled.div`
   box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.6);
   &:hover,
   &:focus {
-    transform: scale(1.05);
+    transform: scale(1.02);
     transition-duration: 100ms;
     cursor: pointer;
   }
@@ -37,7 +37,7 @@ export const FormButton = styled.button`
   box-shadow: 6px 6px 20px rgba(0, 0, 0, 0.2);
   &:hover,
   &:focus {
-    transform: scale(1.05);
+    transform: scale(1.02);
     transition-duration: 100ms;
     cursor: pointer;
   }
